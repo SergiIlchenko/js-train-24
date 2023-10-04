@@ -1,6 +1,27 @@
 console.log("Завдання: 10 ==============================");
 
 function task10() {
+  let promise1 = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 1");
+    }, 500);
+  });
+
+  let promise2 = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 2");
+    }, 200);
+  });
+
+  let promise3 = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 3");
+    }, 300);
+  });
+
+  Promise.any([promise1, promise2, promise3])
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
   // Створюємо проміс promise1, які вирішуються через 500мс, та повертають як успішне виконання рядок "Promise 1".
   // Створюємо проміс promise2, які вирішуються через 200мс, та повертають як успішне виконання рядок "Promise 2".
   // Створюємо проміс promise3, які вирішуються через 300мс, та повертають як успішне виконання рядок "Promise 3".

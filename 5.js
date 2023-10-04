@@ -2,6 +2,24 @@ console.log("Завдання: 5 ==============================");
 
 // Створюємо функцію task5, яка буде використовувати проміси.
 function task5() {
+  let counter = 0;
+  const intervalPromise = new Promise((resolve) => {
+    let interval = setInterval(() => {
+      counter++;
+      console.log(`Значення лічильника: ${counter}`);
+
+      if (counter == 5) {
+        clearInterval(interval);
+        resolve(counter);
+      }
+    }, 5);
+  });
+  intervalPromise
+    .then((counter) => console.log(`${counter}`))
+    .catch((error) => {
+      console.error(error);
+    })
+    .finally(() => console.log("Завершення лічильника"));
   // Створюємо змінну counter яка буде лічильником та присвоюємо значення 0
   // Створюємо проміс з іменем intervalPromise.
   // Використовуємо функцію setInterval, щоб імітувати асинхронну операцію яка повторюється кожну секунду
